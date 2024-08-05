@@ -18,6 +18,9 @@
 
 # 목표1: Kaggle R GPU 이미지에 latest RStudio Server를 설치하여 사용할 수 있도록 한다.
 # 목표2: setup.R을 실행하여 python과 keras를 rstudio가 사용할 수 있도록 한다.
+# gdebi : 프로그램 설치시 추가적으로 설치되어햐 하는 필수사항 설치 후 rstudio 설치함.
+# wget : 경로의 파일을 다운로드
+# -y, -n : interactive 하게 묻지말고 쭉 설치할 수 있도록 함.
 
 ARG rstats_version=v56
 
@@ -25,8 +28,8 @@ FROM gcr.io/kaggle-gpu-images/rstats:${rstats_version}
 ARG rstudio_version=2021.09.0-351
 RUN apt-get update && \
     apt-get install -y gdebi-core && \
-    wget https://download2.rstudio.org/server/focal/amd64/rstudio-server-${rstudio_version}-amd64.deb && \ 
-    gdebi -n rstudio-server-${rstudio_version}-amd64.deb && \ 
+    wget https://download2.rstudio.org/server/focal/amd64/rstudio-server-${rstudio_version}-amd64.deb && \
+    gdebi -n rstudio-server-${rstudio_version}-amd64.deb && \
     apt-get clean && \
     rm rstudio-server-${rstudio_version}-amd64.deb
 
