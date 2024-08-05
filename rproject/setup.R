@@ -1,3 +1,11 @@
+library(data.table)
+
+library(torch)
+torch_tensor(1,device = 'cuda')
+
+library(reticulate)
+reticulate::py_config()
+
 MINICONDA_PATH="/home/rstudio/.local/share/r-miniconda"
 ENV_NAME="r-reticulate"
 PYTHON_VERSION="3.10"
